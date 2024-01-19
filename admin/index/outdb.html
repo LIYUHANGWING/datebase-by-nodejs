@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ 
+    <link rel="stylesheet" href="../../static/admin/css/bootstrap.min.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+    <div ><input type="text" id="Vselect"><button id="Mselect">查询</button></div>
+    <div>
+    <table class="table table-hover" class="table table-bordered">
+        <caption id="pcountName"></caption>
+        <tr class="danger"> <th>物料编码</th> <th>物品名称</th>       <th>物品数量</th>                        <th>物品单价</th> <th>合计金额(单位人民币)</th> <th>入库时间</th></tr>
+        <tr >                <td>1</td>  <td><input type="text" class="namein" id="gname1" ></td>  <td><input type="text" class="inp" id="num1"></td>  <td><input type="text" class="inp" id="pr1"></td>  <td id="to1"></td> <td id="tio1"></td><td><button id="add1">添加</button> <td><button id="del1">删除</button></td> </tr>
+        <tr class="warning"> <td>2</td>  <td><input type="text" class="namein"  id="gname3" ></td>  <td><input type="text" class="inp" id="num3" ></td>  <td><input type="text" class="inp" id="pr3"></td>  <td id="to3"></td> <td id="tio3"></td> <td><button  id="add3">添加</button> <td><button id="del3">删除</button></td> </tr>
+        <tr class="info">    <td>3</td>  <td><input type="text" class="namein"  id="gname4" ></td>  <td><input type="text" class="inp" id="num4"></td>  <td><input type="text" class="inp" id="pr4"></td>  <td id="to4"></td> <td id="tio4"></td> <td><button id="add4">添加</button>  <td><button  id="del4">删除</button></td></tr>
+        <tr  class="active"> <td>4</td>  <td><input type="text" class="namein"  id="gname5" ></td>  <td><input type="text" class="inp" id="num5"></td>  <td><input type="text" class="inp" id="pr5"></td>  <td id="to5"></td> <td id="tio5"></td> <td><button id="add5">添加</button>  <td><button id="del5">删除</button></td></tr>
+        <tr class="success"> <td>5</td>  <td><input type="text" class="namein"  id="gname6" ></td>  <td><input type="text" class="inp" id="num6"></td>  <td><input type="text" class="inp" id="pr6"></td>  <td id="to6"></td> <td id="tio6"></td>  <td><button id="add6">添加</button>  <td><button id="del6">删除</button></td></tr>
+        <tr class="warning"> <td>6</td>  <td><input type="text" class="namein"  id="gname7" ></td>  <td><input type="text" class="inp" id="num7"></td>  <td><input type="text" class="inp" id="pr7"></td>  <td id="to7"></td> <td id="tio7"></td> <td><button id="add7">添加</button>  <td><button id="del7"> 删除</button></td></tr>
+        <tr class="info">    <td>7</td>  <td><input type="text" class="namein"  id="gname8" ></td>  <td><input type="text" class="inp" id="num8"></td>  <td><input type="text" class="inp" id="pr8"></td>  <td id="to8"></td> <td id="tio8"></td> <td><button id="add8">添加</button>   <td><button id="del8">删除</button></td></tr>
+        <tr class="active">  <td>8</td>  <td><input type="text" class="namein"  id="gname9" ></td>  <td><input type="text" class="inp" id="num9"></td>  <td><input type="text" class="inp" id="pr9"></td>  <td id="to9"></td> <td id="tio9"></td> <td><button id="add9">添加</button>  <td><button id="del9">删除</button></td></tr>
+        <tr class="success"> <td>9</td>  <td><input type="text" class="namein"  id="gname10" ></td>  <td><input type="text" class="inp" id="num10"></td>  <td><input type="text" class="inp" id="pr10"></td>  <td id="to10"></td> <td id="tio10"></td> <td><button id="add10">添加</button>  <td><button id="del10">删除</button></td></tr>
+        <tr class="warning"> <td>10</td>  <td><input type="text" class="namein"  id="gname11" ></td>  <td><input type="text" class="inp"id="num11"></td>  <td><input type="text" class="inp" id="pr11"></td> <td id="to11"></td> <td id="tio11"></td> <td><button id="add11">添加</button>  <td><button id="del11">删除</button></td></tr>
+        <tr class="info">    <td>11</td>  <td><input type="text" class="namein"  id="gname12" ></td>  <td><input type="text" class="inp"id="num12"></td>  <td><input type="text" class="inp" id="pr12"></td> <td id="to12"></td> <td id="tio12"></td> <td><button id="add12">添加</button>  <td><button id="del12">删除</button></td></tr>
+        <tr class="active">  <td>12</td>  <td></td>  <td id="num13" ></td>  <td id="pr13"></td> <td id="to13"></td> <td><button id="add13">总计</button>  <td><button id="del13">删除</button></td></tr>
+    </table> </div>
+    <script>
+        $(function(){
+            $('#add1').on('click',function(){
+                let to1=$('#num1').val()*$('#pr1').val();
+                $('#to1').text(to1)
+                let goodsname=$("#gname1").val()
+                let goodsnum=$("#num1").val()
+                let pr1=$("#pr1").val()
+                var date = new Date();
+    //年 getFullYear()：四位数字返回年份
+        var year = date.getFullYear();  //getFullYear()代替getYear()
+    //月 getMonth()：0 ~ 11
+        var month = date.getMonth() + 1;
+    //日 getDate()：(1 ~ 31)
+       var day = date.getDate();
+    //时 getHours()：(0 ~ 23)
+      var hour = date.getHours();
+    //分 getMinutes()： (0 ~ 59)
+      var minute = date.getMinutes();
+    //秒 getSeconds()：(0 ~ 59)
+       var second = date.getSeconds();
+    var time =   year + '-' + addZero(month) + '-' + addZero(day) + ' ' + addZero(hour) + ':' + addZero(minute) + ':' + addZero(second);
+         function addZero(s) {
+             return s < 10 ? ('0' + s) : s;
+      }
+             let ti0=time;
+             $("#tio1").text(ti0)
+                $.ajax({
+                    type:'POST',
+                    url :'http://127.0.0.1:3007/api/goodsin',
+                    data:{
+                        id:'1',
+                        goodsname:goodsname,
+                        goodsnum:goodsnum,
+                        gpr:pr1,
+                        gtime:ti0
+
+                    },
+                    success:function(results){
+                        console.log(results)
+                        alert('录入成功')
+                    },
+                    error:function(){
+                        console.log(res)
+                    }
+                })
+            })
+        })
+         
+            $('#del1').on('click',function(){
+                $('#to1').text(' ')
+                $("#tio1").text(' ')
+            })
+//按钮二
+
+        $(function(){
+            $('#add3').on('click',function(){
+                let to1=$('#num3').val()*$('#pr3').val();
+                $('#to3').text(to1)
+                let goodsname=$("#gname3").val()
+                let goodsnum=$("#num3").val()
+                let pr1=$("#pr3").val()
+                var date = new Date();
+    //年 getFullYear()：四位数字返回年份
+        var year = date.getFullYear();  //getFullYear()代替getYear()
+    //月 getMonth()：0 ~ 11
+        var month = date.getMonth() + 1;
+    //日 getDate()：(1 ~ 31)
+       var day = date.getDate();
+    //时 getHours()：(0 ~ 23)
+      var hour = date.getHours();
+    //分 getMinutes()： (0 ~ 59)
+      var minute = date.getMinutes();
+    //秒 getSeconds()：(0 ~ 59)
+       var second = date.getSeconds();
+    var time =   year + '-' + addZero(month) + '-' + addZero(day) + ' ' + addZero(hour) + ':' + addZero(minute) + ':' + addZero(second);
+         function addZero(s) {
+             return s < 10 ? ('0' + s) : s;
+      }
+             let ti0=time;
+             $("#tio3").text(ti0)
+                $.ajax({
+                    type:'POST',
+                    url :'http://127.0.0.1:3007/api/goodsin',
+                    data:{
+                        id:'2',
+                        goodsname:goodsname,
+                        goodsnum:goodsnum,
+                        gpr:pr1,
+                        gtime:ti0
+
+                    },
+                    success:function(results){
+                        console.log(results)
+                        alert('录入成功')
+                    },
+                    error:function(){
+                        console.log(res)
+                    }
+                })
+            })
+        })
+           
+            $('#del3').on('click',function(){
+                $('#to3').text(' ')
+                $("#tio3").text(' ')
+
+            })
+//按钮3
+        $(function(){
+            $('#add4').on('click',function(){
+                let to1=$('#num4').val()*$('#pr4').val();
+                $('#to4').text(to1)
+                let goodsname=$("#gname4").val()
+                let goodsnum=$("#num4").val()
+                let pr1=$("#pr4").val()
+                var date = new Date();
+    //年 getFullYear()：四位数字返回年份
+        var year = date.getFullYear();  //getFullYear()代替getYear()
+    //月 getMonth()：0 ~ 11
+        var month = date.getMonth() + 1;
+    //日 getDate()：(1 ~ 31)
+       var day = date.getDate();
+    //时 getHours()：(0 ~ 23)
+      var hour = date.getHours();
+    //分 getMinutes()： (0 ~ 59)
+      var minute = date.getMinutes();
+    //秒 getSeconds()：(0 ~ 59)
+       var second = date.getSeconds();
+    var time =   year + '-' + addZero(month) + '-' + addZero(day) + ' ' + addZero(hour) + ':' + addZero(minute) + ':' + addZero(second);
+         function addZero(s) {
+             return s < 10 ? ('0' + s) : s;
+      }
+             let ti0=time;
+             $("#tio4").text(ti0)
+                $.ajax({
+                    type:'POST',
+                    url :'http://127.0.0.1:3007/api/goodsin',
+                    data:{
+                        id:'3',
+                        goodsname:goodsname,
+                        goodsnum:goodsnum,
+                        gpr:pr1,
+                        gtime:ti0
+
+                    },
+                    success:function(results){
+                        console.log(results)
+                        alert('录入成功')
+                    },
+                    error:function(){
+                        console.log(res)
+                    }
+                })
+            })
+            $('#del4').on('click',function(){
+                $('#to4').text(' ')
+                $("#tio4").text(' ')
+
+            })
+        })
+
+//按钮5
+        $(function(){
+            $('#add5').on('click',function(){
+                let to1=$('#num5').val()*$('#pr5').val();
+                $('#to5').text(to1)
+                let goodsname=$("#gname5").val()
+                let goodsnum=$("#num5").val()
+                let pr1=$("#pr5").val()
+                var date = new Date();
+    //年 getFullYear()：四位数字返回年份
+        var year = date.getFullYear();  //getFullYear()代替getYear()
+    //月 getMonth()：0 ~ 11
+        var month = date.getMonth() + 1;
+    //日 getDate()：(1 ~ 31)
+       var day = date.getDate();
+    //时 getHours()：(0 ~ 23)
+      var hour = date.getHours();
+    //分 getMinutes()： (0 ~ 59)
+      var minute = date.getMinutes();
+    //秒 getSeconds()：(0 ~ 59)
+       var second = date.getSeconds();
+    var time =   year + '-' + addZero(month) + '-' + addZero(day) + ' ' + addZero(hour) + ':' + addZero(minute) + ':' + addZero(second);
+         function addZero(s) {
+             return s < 10 ? ('0' + s) : s;
+      }
+             let ti0=time;
+             $("#tio5").text(ti0)
+                $.ajax({
+                    type:'POST',
+                    url :'http://127.0.0.1:3007/api/goodsin',
+                    data:{
+                        id:'4',
+                        goodsname:goodsname,
+                        goodsnum:goodsnum,
+                        gpr:pr1,
+                        gtime:ti0
+
+                    },
+                    success:function(results){
+                        console.log(results)
+                        alert('录入成功')
+                    },
+                    error:function(){
+                        console.log(res)
+                    }
+                })
+
+            })
+            $('#del5').on('click',function(){
+                $('#to5').text(' ')
+                $("#tio5").text(' ')
+            })
+        })
+//按钮6
+        $(function(){
+            $('#add6').on('click',function(){
+                let to1=$('#num6').val()*$('#pr6').val();
+                $('#to6').text(to1)
+                let goodsname=$("#gname6").val()
+                let goodsnum=$("#num6").val()
+                let pr1=$("#pr6").val()
+                var date = new Date();
+    //年 getFullYear()：四位数字返回年份
+        var year = date.getFullYear();  //getFullYear()代替getYear()
+    //月 getMonth()：0 ~ 11
+        var month = date.getMonth() + 1;
+    //日 getDate()：(1 ~ 31)
+       var day = date.getDate();
+    //时 getHours()：(0 ~ 23)
+      var hour = date.getHours();
+    //分 getMinutes()： (0 ~ 59)
+      var minute = date.getMinutes();
+    //秒 getSeconds()：(0 ~ 59)
+       var second = date.getSeconds();
+    var time =   year + '-' + addZero(month) + '-' + addZero(day) + ' ' + addZero(hour) + ':' + addZero(minute) + ':' + addZero(second);
+         function addZero(s) {
+             return s < 10 ? ('0' + s) : s;
+      }
+             let ti0=time;
+             $("#tio6").text(ti0)
+                $.ajax({
+                    type:'POST',
+                    url :'http://127.0.0.1:3007/api/goodsin',
+                    data:{
+                        id:'5',
+                        goodsname:goodsname,
+                        goodsnum:goodsnum,
+                        gpr:pr1,
+                        gtime:ti0
+
+                    },
+                    success:function(results){
+                        console.log(results)
+                        alert('录入成功')
+                    },
+                    error:function(){
+                        console.log(res)
+                    }
+                })
+            })
+            $('#del6').on('click',function(){
+                $('#to6').text(' ')
+                $("#tio6").text(' ')
+            })
+            })
+      
+//按钮七
+        $(function(){
+            $('#add7').on('click',function(){
+                let to1=$('#num7').val()*$('#pr7').val();
+                $('#to7').text(to1)
+                let goodsname=$("#gname7").val()
+                let goodsnum=$("#num7").val()
+                let pr1=$("#pr7").val()
+                var date = new Date();
+    //年 getFullYear()：四位数字返回年份
+        var year = date.getFullYear();  //getFullYear()代替getYear()
+    //月 getMonth()：0 ~ 11
+        var month = date.getMonth() + 1;
+    //日 getDate()：(1 ~ 31)
+       var day = date.getDate();
+    //时 getHours()：(0 ~ 23)
+      var hour = date.getHours();
+    //分 getMinutes()： (0 ~ 59)
+      var minute = date.getMinutes();
+    //秒 getSeconds()：(0 ~ 59)
+       var second = date.getSeconds();
+    var time =   year + '-' + addZero(month) + '-' + addZero(day) + ' ' + addZero(hour) + ':' + addZero(minute) + ':' + addZero(second);
+         function addZero(s) {
+             return s < 10 ? ('0' + s) : s;
+      }
+             let ti0=time;
+             $("#tio7").text(ti0)
+                $.ajax({
+                    type:'POST',
+                    url :'http://127.0.0.1:3007/api/goodsin',
+                    data:{
+                        id:'6',
+                        goodsname:goodsname,
+                        goodsnum:goodsnum,
+                        gpr:pr1,
+                        gtime:ti0
+
+                    },
+                    success:function(results){
+                        console.log(results)
+                        alert('录入成功')
+                    },
+                    error:function(){
+                        console.log(res)
+                    }
+                })
+
+            })
+            $('#del7').on('click',function(){
+                $('#to7').text(' ')
+                $("#tio7").text(' ')
+
+            })
+        })
+//按钮8
+        $(function(){
+            $('#add8').on('click',function(){
+                let to1=$('#num8').val()*$('#pr8').val();
+                $('#to8').text(to1)
+                let goodsname=$("#gname8").val()
+                let goodsnum=$("#num8").val()
+                let pr1=$("#pr8").val()
+                var date = new Date();
+    //年 getFullYear()：四位数字返回年份
+        var year = date.getFullYear();  //getFullYear()代替getYear()
+    //月 getMonth()：0 ~ 11
+        var month = date.getMonth() + 1;
+    //日 getDate()：(1 ~ 31)
+       var day = date.getDate();
+    //时 getHours()：(0 ~ 23)
+      var hour = date.getHours();
+    //分 getMinutes()： (0 ~ 59)
+      var minute = date.getMinutes();
+    //秒 getSeconds()：(0 ~ 59)
+       var second = date.getSeconds();
+    var time =   year + '-' + addZero(month) + '-' + addZero(day) + ' ' + addZero(hour) + ':' + addZero(minute) + ':' + addZero(second);
+         function addZero(s) {
+             return s < 10 ? ('0' + s) : s;
+      }
+             let ti0=time;
+             $("#tio8").text(ti0)
+                $.ajax({
+                    type:'POST',
+                    url :'http://127.0.0.1:3007/api/goodsin',
+                    data:{
+                        id:'7',
+                        goodsname:goodsname,
+                        goodsnum:goodsnum,
+                        gpr:pr1,
+                        gtime:ti0
+
+                    },
+                    success:function(results){
+                        console.log(results)
+                        alert('录入成功')
+                    },
+                    error:function(){
+                        console.log(res)
+                    }
+                })
+
+            })
+            $('#del8').on('click',function(){
+                $('#to8').text(' ')
+                $("#tio8").text(' ')
+            })
+        })
+//按钮9
+        $(function(){
+            $('#add9').on('click',function(){
+                let to1=$('#num9').val()*$('#pr9').val();
+                $('#to9').text(to1)
+                let goodsname=$("#gname9").val()
+                let goodsnum=$("#num9").val()
+                let pr1=$("#pr9").val()
+                var date = new Date();
+    //年 getFullYear()：四位数字返回年份
+        var year = date.getFullYear();  //getFullYear()代替getYear()
+    //月 getMonth()：0 ~ 11
+        var month = date.getMonth() + 1;
+    //日 getDate()：(1 ~ 31)
+       var day = date.getDate();
+    //时 getHours()：(0 ~ 23)
+      var hour = date.getHours();
+    //分 getMinutes()： (0 ~ 59)
+      var minute = date.getMinutes();
+    //秒 getSeconds()：(0 ~ 59)
+       var second = date.getSeconds();
+    var time =   year + '-' + addZero(month) + '-' + addZero(day) + ' ' + addZero(hour) + ':' + addZero(minute) + ':' + addZero(second);
+         function addZero(s) {
+             return s < 10 ? ('0' + s) : s;
+      }
+             let ti0=time;
+             $("#tio9").text(ti0)
+                $.ajax({
+                    type:'POST',
+                    url :'http://127.0.0.1:3007/api/goodsin',
+                    data:{
+                        id:'8',
+                        goodsname:goodsname,
+                        goodsnum:goodsnum,
+                        gpr:pr1,
+                        gtime:ti0
+
+                    },
+                    success:function(results){
+                        console.log(results)
+                        alert('录入成功')
+                    },
+                    error:function(){
+                        console.log(res)
+                    }
+                })
+            })
+            $('#del9').on('click',function(){
+                $('#to9').text(' ')
+                $("#tio9").text(' ')
+            })
+        })
+//按钮10
+
+        $(function(){
+            $('#add10').on('click',function(){
+                let to1=$('#num10').val()*$('#pr10').val();
+                $('#to10').text(to1)
+                let goodsname=$("#gname10").val()
+                let goodsnum=$("#num10").val()
+                let pr1=$("#pr10").val()
+                var date = new Date();
+    //年 getFullYear()：四位数字返回年份
+        var year = date.getFullYear();  //getFullYear()代替getYear()
+    //月 getMonth()：0 ~ 11
+        var month = date.getMonth() + 1;
+    //日 getDate()：(1 ~ 31)
+       var day = date.getDate();
+    //时 getHours()：(0 ~ 23)
+      var hour = date.getHours();
+    //分 getMinutes()： (0 ~ 59)
+      var minute = date.getMinutes();
+    //秒 getSeconds()：(0 ~ 59)
+       var second = date.getSeconds();
+    var time =   year + '-' + addZero(month) + '-' + addZero(day) + ' ' + addZero(hour) + ':' + addZero(minute) + ':' + addZero(second);
+         function addZero(s) {
+             return s < 10 ? ('0' + s) : s;
+      }
+             let ti0=time;
+             $("#tio10").text(ti0)
+                $.ajax({
+                    type:'POST',
+                    url :'http://127.0.0.1:3007/api/goodsin',
+                    data:{
+                        id:'9',
+                        goodsname:goodsname,
+                        goodsnum:goodsnum,
+                        gpr:pr1,
+                        gtime:ti0
+
+                    },
+                    success:function(results){
+                        console.log(results)
+                        alert('录入成功')
+                    },
+                    error:function(){
+                        console.log(res)
+                    }
+                })
+            })
+            $('#del10').on('click',function(){
+                $('#to10').text(' ')
+                $("#tio10").text(' ')
+            })
+        })
+//按钮11
+        $(function(){
+            $('#add11').on('click',function(){
+                let to1=$('#num11').val()*$('#pr11').val();
+                $('#to11').text(to1)
+                let goodsname=$("#gname11").val()
+                let goodsnum=$("#num11").val()
+                let pr1=$("#pr11").val()
+                var date = new Date();
+    //年 getFullYear()：四位数字返回年份
+        var year = date.getFullYear();  //getFullYear()代替getYear()
+    //月 getMonth()：0 ~ 11
+        var month = date.getMonth() + 1;
+    //日 getDate()：(1 ~ 31)
+       var day = date.getDate();
+    //时 getHours()：(0 ~ 23)
+      var hour = date.getHours();
+    //分 getMinutes()： (0 ~ 59)
+      var minute = date.getMinutes();
+    //秒 getSeconds()：(0 ~ 59)
+       var second = date.getSeconds();
+    var time =   year + '-' + addZero(month) + '-' + addZero(day) + ' ' + addZero(hour) + ':' + addZero(minute) + ':' + addZero(second);
+         function addZero(s) {
+             return s < 10 ? ('0' + s) : s;
+      }
+             let ti0=time;
+             $("#tio11").text(ti0)
+                $.ajax({
+                    type:'POST',
+                    url :'http://127.0.0.1:3007/api/goodsin',
+                    data:{
+                        id:'10',
+                        goodsname:goodsname,
+                        goodsnum:goodsnum,
+                        gpr:pr1,
+                        gtime:ti0
+
+                    },
+                    success:function(results){
+                        console.log(results)
+                        alert('录入成功')
+                    },
+                    error:function(){
+                        console.log(res)
+                    }
+                })
+
+            })
+            $('#del11').on('click',function(){
+                $('#to11').text(' ')
+                $("#tio11").text(' ')
+            })
+        })
+//按钮12
+        $(function(){
+            $('#add12').on('click',function(){
+                let to1=$('#num12').val()*$('#pr12').val();
+                $('#to12').text(to1)
+                let goodsname=$("#gname12").val()
+                let goodsnum=$("#num12").val()
+                let pr1=$("#pr12").val()
+                var date = new Date();
+    //年 getFullYear()：四位数字返回年份
+        var year = date.getFullYear();  //getFullYear()代替getYear()
+    //月 getMonth()：0 ~ 11
+        var month = date.getMonth() + 1;
+    //日 getDate()：(1 ~ 31)
+       var day = date.getDate();
+    //时 getHours()：(0 ~ 23)
+      var hour = date.getHours();
+    //分 getMinutes()： (0 ~ 59)
+      var minute = date.getMinutes();
+    //秒 getSeconds()：(0 ~ 59)
+       var second = date.getSeconds();
+    var time =   year + '-' + addZero(month) + '-' + addZero(day) + ' ' + addZero(hour) + ':' + addZero(minute) + ':' + addZero(second);
+         function addZero(s) {
+             return s < 10 ? ('0' + s) : s;
+      }
+             let ti0=time;
+             $("#tio12").text(ti0)
+                $.ajax({
+                    type:'POST',
+                    url :'http://127.0.0.1:3007/api/goodsin',
+                    data:{
+                        id:'11',
+                        goodsname:goodsname,
+                        goodsnum:goodsnum,
+                        gpr:pr1,
+                        gtime:ti0
+
+                    },
+                    success:function(results){
+                        console.log(results)
+                        alert('录入成功')
+                    },
+                    error:function(){
+                        console.log(res)
+                    }
+                })
+
+            })
+            $('#del12').on('click',function(){
+                $('#to12').text(' ')
+                $("#tio12").text(' ')
+            })
+        })
+        $(function(){
+            $('#add13').on('click',function(){
+                let to1=$('#num1').val()*$('#pr1').val();
+                let to3=$('#num3').val()*$('#pr3').val();
+                let to4=$('#num4').val()*$('#pr4').val();
+                let to5=$('#num5').val()*$('#pr5').val();
+                let to6=$('#num6').val()*$('#pr6').val();
+                let to7=$('#num7').val()*$('#pr7').val();
+                let to8=$('#num8').val()*$('#pr8').val();
+                let to9=$('#num9').val()*$('#pr9').val();
+                let to10=$('#num10').val()*$('#pr10').val();
+                let to11=$('#num11').val()*$('#pr11').val();
+                let to13=$('#num13').val()*$('#pr13').val()+to1+to3+to4+to5+to6+to7+to8+to9+to10+to11;
+                $('#to13').text(to13)
+            })
+            $('#del13').on('click',function(){
+                $('#to13').text(' ')
+            })
+        })
+       
+$(function(){
+    $('#Mselect').on('click',function(){
+         let keyid=$('#Vselect').val();
+        window.localStorage.setItem('goodsname',keyid)
+        window.open('./showT.html')
+    })
+})
+       
+       
+       
+
+
+    </script>
+
+   <style>
+    .inp{
+        width: 40px;
+    }
+    .namein{
+        width: 80px;
+    }
+   </style>
+</body>
+</html>

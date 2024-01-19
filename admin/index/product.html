@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../static/admin/css/bootstrap.min.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+    <div><input type="text" id="gselect"><button>查询</button></div>
+    <div>
+    <table class="table table-hover" class="table table-bordered">
+        <caption id="pcountName"></caption>
+        <tr class="danger"> <th>物品代码</th> <th>物品名称</th>       <th>物品数量</th>                        <th>物品单价</th> <th>合计金额(单位人民币)</th></tr>
+        <tr > <td>1</td>  <td><input type="text"></td>  <td><input type="text" class="inp" id="num1"></td>  <td><input type="text" class="inp" id="pr1"></td>  <td id="to1"></td>  <td><button id="add1">添加</button> <td><button id="del1">删除</button></td> </tr>
+        <tr class="warning"> <td>2</td>  <td><input type="text"></td>  <td><input type="text" class="inp" id="num3" ></td>  <td><input type="text" class="inp" id="pr3"></td>  <td id="to3"></td> <td><button  id="add3">添加</button> <td><button id="del3">删除</button></td> </tr>
+        <tr class="info"> <td>3</td>  <td><input type="text"></td>  <td><input type="text" class="inp" id="num4"></td>  <td><input type="text" class="inp" id="pr4"></td>  <td id="to4"></td> <td><button id="add4">添加</button>  <td><button  id="del4">删除</button></td></tr>
+        <tr  class="active"> <td>4</td>  <td><input type="text"></td>  <td><input type="text" class="inp" id="num5"></td>  <td><input type="text" class="inp" id="pr5"></td>  <td id="to5"></td> <td><button id="add5">添加</button>  <td><button id="del5">删除</button></td></tr>
+        <tr class="success"> <td>5</td>  <td><input type="text"></td>  <td><input type="text" class="inp" id="num6"></td>  <td><input type="text" class="inp" id="pr6"></td>  <td id="to6"></td>  <td><button id="add6">添加</button>  <td><button id="del6">删除</button></td></tr>
+        <tr  class="warning"> <td>6</td>  <td><input type="text"></td>  <td><input type="text" class="inp" id="num7"></td>  <td><input type="text" class="inp" id="pr7"></td>  <td id="to7"></td>  <td><button id="add7">添加</button>  <td><button id="del7"> 删除</button></td></tr>
+        <tr class="info"> <td>7</td>  <td><input type="text"></td>  <td><input type="text" class="inp" id="num8"></td>  <td><input type="text" class="inp" id="pr8"></td>  <td id="to8"></td>  <td><button id="add8">添加</button>   <td><button id="del8">删除</button></td></tr>
+        <tr class="active"> <td>8</td>  <td><input type="text"></td>  <td><input type="text" class="inp" id="num9"></td>  <td><input type="text" class="inp" id="pr9"></td>  <td id="to9"></td>  <td><button id="add9">添加</button>  <td><button id="del9">删除</button></td></tr>
+        <tr class="success"> <td>9</td>  <td><input type="text"></td>  <td><input type="text" class="inp" id="num10"></td>  <td><input type="text" class="inp" id="pr10"></td>  <td id="to10"></td>  <td><button id="add10">添加</button>  <td><button id="del10">删除</button></td></tr>
+        <tr class="warning"> <td>10</td>  <td><input type="text"></td>  <td><input type="text" class="inp"id="num11"></td>  <td><input type="text" class="inp" id="pr11"></td> <td id="to11"></td>  <td><button id="add11">添加</button>  <td><button id="del11">删除</button></td></tr>
+        <tr class="info"> <td>11</td>  <td><input type="text"></td>  <td><input type="text" class="inp"id="num12"></td>  <td><input type="text" class="inp" id="pr12"></td> <td id="to12"></td> <td><button id="add12">添加</button>  <td><button id="del12">删除</button></td></tr>
+        <tr class="active"> <td>12</td>  <td><input type="text"></td>  <td><input type="text" class="inp" id="num13"></td>  <td><input type="text" class="inp" id="pr13"></td> <td id="to13"></td> <td><button id="add13">添加</button>  <td><button id="del13">删除</button></td></tr>
+    </table> 
+</div>
+    <script>
+        $(function(){
+            $('#add1').on('click',function(){
+                let to1=$('#num1').val()*$('#pr1').val();
+                $('#to1').text(to1)
+            })
+            $('#del1').on('click',function(){
+                $('#to1').text(' ')
+            })
+        })
+        $(function(){
+            $('#add3').on('click',function(){
+                let to1=$('#num3').val()*$('#pr3').val();
+                $('#to3').text(to1)
+            })
+            $('#del3').on('click',function(){
+                $('#to3').text(' ')
+            })
+        })
+        $(function(){
+            $('#add4').on('click',function(){
+                let to1=$('#num4').val()*$('#pr4').val();
+                $('#to4').text(to1)
+            })
+            $('#del4').on('click',function(){
+                $('#to4').text(' ')
+            })
+        })
+        $(function(){
+            $('#add5').on('click',function(){
+                let to1=$('#num5').val()*$('#pr5').val();
+                $('#to5').text(to1)
+            })
+            $('#del5').on('click',function(){
+                $('#to5').text(' ')
+            })
+        })
+        $(function(){
+            $('#add6').on('click',function(){
+                let to1=$('#num6').val()*$('#pr6').val();
+                $('#to6').text(to1)
+            })
+            $('#del6').on('click',function(){
+                $('#to6').text(' ')
+            })
+        })
+        $(function(){
+            $('#add7').on('click',function(){
+                let to1=$('#num7').val()*$('#pr7').val();
+                $('#to7').text(to1)
+            })
+            $('#del7').on('click',function(){
+                $('#to7').text(' ')
+            })
+        })
+        $(function(){
+            $('#add8').on('click',function(){
+                let to1=$('#num8').val()*$('#pr8').val();
+                $('#to8').text(to1)
+            })
+            $('#del8').on('click',function(){
+                $('#to8').text(' ')
+            })
+        })
+        $(function(){
+            $('#add9').on('click',function(){
+                let to1=$('#num9').val()*$('#pr9').val();
+                $('#to9').text(to1)
+            })
+            $('#del9').on('click',function(){
+                $('#to9').text(' ')
+            })
+        })
+        $(function(){
+            $('#add10').on('click',function(){
+                let to1=$('#num10').val()*$('#pr10').val();
+                $('#to10').text(to1)
+            })
+            $('#del10').on('click',function(){
+                $('#to10').text(' ')
+            })
+        })
+        $(function(){
+            $('#add11').on('click',function(){
+                let to1=$('#num11').val()*$('#pr11').val();
+                $('#to11').text(to1)
+            })
+            $('#del11').on('click',function(){
+                $('#to11').text(' ')
+            })
+        })
+        $(function(){
+            $('#add12').on('click',function(){
+                let to1=$('#num12').val()*$('#pr12').val();
+                $('#to12').text(to1)
+            })
+            $('#del12').on('click',function(){
+                $('#to12').text(' ')
+            })
+        })
+        $(function(){
+            $('#add13').on('click',function(){
+                let to1=$('#num13').val()*$('#pr13').val();
+                $('#to13').text(to1)
+            })
+            $('#del13').on('click',function(){
+                $('#to13').text(' ')
+            })
+        })
+       
+       
+       
+       
+       
+
+
+    </script>
+
+   <style>
+    .inp{
+        width: 40px;
+    }
+    @media print{
+        table {
+            border-collapse: collapse;
+            width: 100%!;
+            margin-bottom: 20px;
+        }
+        th,td{
+            text-align: left;
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+        th{
+            background-color: #f2f2f2;
+        }
+    }
+   </style>
+   <button onclick="window.print()">打印表格</button>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../static/admin/css/bootstrap.min.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <table class="table table-hover" class="table table-bordered" id="retable">
+        <caption id="tle">目标物料</caption>
+        <tr class="danger"> <th>物料编码</th> <th>物品名称</th><th>物品数量</th> <th>物品单价</th><th>合计金额(单位人民币)</th> <th>入库时间</th></tr>
+        <tr>  <td id="gid"></td> <td id="gname"></td> <td id="gnum"></td> <td id="gpr"></td> <td id="cnt"></td> <td id="tio"></td> </tr>
+        <tr>  <td id="gid1"></td> <td id="gname1"></td> <td id="gnum1"></td> <td id="gpr1"></td> <td id="cnt1"></td> <td id="tio1"></td> </tr>
+        <td id="gid2"></td> <td id="gname2"></td> <td id="gnum2"></td> <td id="gpr2"></td> <td id="cnt2"></td> <td id="tio2"></td> </tr>
+    </table>
+    <script>
+        $(function(){
+            let name=localStorage.getItem('goodsname')
+            console.log(name)
+            $.ajax({
+                type:'get',
+                    url :'http://127.0.0.1:3007/api/goodsinfo',
+                    data:{
+                       goodsname:name,
+                    },
+                    success:function(result){
+                        console.log(result)
+                        $("#gid").text(result.data[0].id)
+                        $("#gname").text(result.data[0].goodsname)
+                        $("#gnum").text(result.data[0].goodsnum)
+                        $("#gpr").text(result.data[0].gpr)
+                        $("#cnt").text(result.data[0].gpr*result.data[0].goodsnum)
+                        $("#tio").text(result.data[0].gtime)
+                        $("#gid1").text(result.data[1].id)
+                        $("#gname1").text(result.data[1].goodsname)
+                        $("#gnum1").text(result.data[1].goodsnum)
+                        $("#gpr1").text(result.data[1].gpr)
+                        $("#cnt1").text(result.data[1].gpr*result.data[1].goodsnum)
+                        $("#tio1").text(result.data[1].gtime)
+                       
+                    },
+                    error:function(){
+                        console.log(res)
+                    }
+                })
+            })
+           
+        
+    </script>
+<style>
+  
+</style>
+    
+</body>
+</html>
